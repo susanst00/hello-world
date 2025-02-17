@@ -1,4 +1,5 @@
-apiVersion: v1
+#apiVersion: v1
+apiVersion: dynatrace.com/v1beta3
 data:
   apiToken: ZHQwYzAxLlVOUVJHU0lMTVpBR1pOTjVPTkc3MjY3NC5YVk9FMlpKWTIzUlRCS1Q0VVBOTEJINUNVRVRHNFBPSEMzS1NFQUdDWk80TkY1NEpHQlhGSkdFWlhZQ1lSWkJK
   dataIngestToken: ZHQwYzAxLlVSUVpHMzNNM0lIVFFCNkFRQVBMVFZTSC5DM0JRRlVVU1BGNFVKNVBPVFg3N0JGNVBHRUxUNkFXMktHSFJYSVVSNUhTRFUyRU5SMjNQNUJRTFhTMzVISkpE
@@ -21,6 +22,29 @@ spec:
   # For Managed, change the apiUrl address.
   # For instructions on how to determine the environment ID and how to configure the apiUrl address, see https://www.dynatrace.com/support/help/reference/dynatrace-concepts/environment-id/.
   apiUrl: https://tfh19986.sprint.dynatracelabs.com/api
+
+  #added for kspm - susan
+  kspm: {}
+  activeGate:
+    capabilities:
+      - kubernetes-monitoring
+    customProperties:
+      value: |
+        [kubernetes_monitoring]
+        kubernetes_configuration_dataset_pipeline_enabled = true
+        kubernetes_configuration_dataset_pipeline_include_node_config = true
+  templates:
+    kspmNodeConfigurationCollector:
+      imageRef:
+        repository: public.ecr.aws/dynatrace/dynatrace-k8s-node-config-collector
+        tag: <tag>
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
 
   # Optional: Name of the secret holding the credentials required to connect to the Dynatrace tenant
   # If unset, the name of this custom resource is used
