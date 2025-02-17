@@ -118,7 +118,7 @@ spec:
       # Optional: If you want to use CSIDriver; disable if your cluster does not have 'nodes' to fall back to the volume approach.
       # Defaults to false
       #
-      #useCSIDriver: true
+      # useCSIDriver: true
       # Optional: The URI of the image that contains the codemodules specific OneAgent that will be injected into pods and applications.
       # For an example of a Dockerfile creating such an image, see https://dt-url.net/operator-docker-samples
       #
@@ -199,16 +199,14 @@ spec:
     # Optional: Defines a custom properties file, the file contents can be provided either as a value in this yaml or as a reference to a secret.
     # If a reference to a secret is used, then the file contents must be stored under the 'customProperties' key within the secret.
     #
-    # customProperties:
-    #   value: |
+    customProperties:
+      value: |
+        [kubernetes_monitoring]
+        kubernetes_configuration_dataset_pipeline_enabled = true
+        kubernetes_configuration_dataset_pipeline_include_node_config = true    
     #     [connectivity]
     #     networkZone=
     #   valueFrom: myCustomPropertiesSecret
-    customProperties:
-     value: |
-       [kubernetes_monitoring]
-       kubernetes_configuration_dataset_pipeline_enabled = true
-       kubernetes_configuration_dataset_pipeline_include_node_config = true
 
     # Optional: Specifies the name of a secret containing a TLS certificate, a TLS key and the TLS key's password to be used by ActiveGate instances
     # If unset, a self-signed certificate is used
@@ -239,7 +237,7 @@ spec:
     # For more information on TopologySpreadConstraints, see https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
     #
     # topologySpreadConstraints: []
- templates:
+  templates:
     kspmNodeConfigurationCollector:
       imageRef:
         repository: public.ecr.aws/dynatrace/dynatrace-k8s-node-config-collector
