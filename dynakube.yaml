@@ -28,7 +28,7 @@ spec:
   # If unset, the name of this custom resource is used
   #
   # tokens: ""
-   spec.kspm: {}
+  kspm: {}
 
   # Optional: Defines a custom pull secret in case you use a private registry when pulling images from the Dynatrace environment
   # The secret has to be of type 'kubernetes.io/dockerconfigjson' (see https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
@@ -118,7 +118,7 @@ spec:
       # Optional: If you want to use CSIDriver; disable if your cluster does not have 'nodes' to fall back to the volume approach.
       # Defaults to false
       #
-      useCSIDriver: true
+      #useCSIDriver: true
       # Optional: The URI of the image that contains the codemodules specific OneAgent that will be injected into pods and applications.
       # For an example of a Dockerfile creating such an image, see https://dt-url.net/operator-docker-samples
       #
@@ -146,11 +146,6 @@ spec:
     capabilities:
       - routing
       - kubernetes-monitoring
-    customProperties:
-     value: |
-       [kubernetes_monitoring]
-       kubernetes_configuration_dataset_pipeline_enabled = true
-       kubernetes_configuration_dataset_pipeline_include_node_config = true
 
     # Optional: Sets the image used to deploy ActiveGate instances
     # Defaults to the latest ActiveGate image on the tenant's registry
@@ -170,18 +165,6 @@ spec:
     # - effect: NoSchedule
     #   key: node-role.kubernetes.io/master
     #   operator: Exists
- templates:
-    kspmNodeConfigurationCollector:
-      imageRef:
-        repository: public.ecr.aws/dynatrace/dynatrace-k8s-node-config-collector
-        tag: <tag>
-      tolerations:
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/master
-          operator: Exists
-        - effect: NoSchedule
-          key: node-role.kubernetes.io/control-plane
-          operator: Exists
 
     # Optional: Sets a node selector to control on which nodes the ActiveGate will be deployed.
     # For more information on node selectors, see https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/
@@ -221,6 +204,11 @@ spec:
     #     [connectivity]
     #     networkZone=
     #   valueFrom: myCustomPropertiesSecret
+    customProperties:
+     value: |
+       [kubernetes_monitoring]
+       kubernetes_configuration_dataset_pipeline_enabled = true
+       kubernetes_configuration_dataset_pipeline_include_node_config = true
 
     # Optional: Specifies the name of a secret containing a TLS certificate, a TLS key and the TLS key's password to be used by ActiveGate instances
     # If unset, a self-signed certificate is used
@@ -251,3 +239,15 @@ spec:
     # For more information on TopologySpreadConstraints, see https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
     #
     # topologySpreadConstraints: []
+ templates:
+    kspmNodeConfigurationCollector:
+      imageRef:
+        repository: public.ecr.aws/dynatrace/dynatrace-k8s-node-config-collector
+        tag: 1.0.0
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
