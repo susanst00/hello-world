@@ -8,7 +8,8 @@ metadata:
   namespace: dynatrace
 type: Opaque
 ---
-apiVersion: dynatrace.com/v1beta2
+#apiVersion: dynatrace.com/v1beta2
+apiVersion: dynatrace.com/v1beta3
 kind: DynaKube
 metadata:
   name: openmetadata-123
@@ -23,8 +24,8 @@ spec:
   apiUrl: https://tfh19986.sprint.dynatracelabs.com/api
 
   #added for kspm - susan
-  apiVersion: dynatrace.com/v1beta3
-  kspm: {}
+  
+  kspm: 
   activeGate:
     capabilities:
       - kubernetes-monitoring
