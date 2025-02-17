@@ -1,5 +1,5 @@
-#apiVersion: v1
-apiVersion: dynatrace.com/v1beta3
+apiVersion: v1
+#apiVersion: dynatrace.com/v1beta3
 data:
   apiToken: ZHQwYzAxLkdKQ0xNUE5LSzVHUFhSWkM1VFBVRjVYVS5GQkxaNlJLN05aVDNJTkVDWE1KTlBHWVRaSTZEWFVKT0g0SU1MWVZIUjRYNVcyRkZMTkpBNlFRN1ROUkZPN1pQ
   dataIngestToken: ZHQwYzAxLlM1NUZLNTNDTERBRU9RSUtZRE9BQ0gzVC4yVjRZNkFWWE5WUEFDNlBBQUFITzdXUjdaTjdXWUNMVUNGRzVRWlk2V0QyS1dDU1VKSFU0SEs0VVpaWjVNS1VJ
@@ -9,7 +9,8 @@ metadata:
   namespace: dynatrace
 type: Opaque
 ---
-apiVersion: dynatrace.com/v1beta2
+#apiVersion: dynatrace.com/v1beta2
+apiVersion: dynatrace.com/v1beta3
 kind: DynaKube
 metadata:
   name: openmetadata-123-try3
