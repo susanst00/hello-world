@@ -27,7 +27,7 @@ spec:
   # Optional: Name of the secret holding the credentials required to connect to the Dynatrace tenant
   # If unset, the name of this custom resource is used
   #
-   tokens: ""
+  # tokens: ""
    spec.kspm: {}
 
   # Optional: Defines a custom pull secret in case you use a private registry when pulling images from the Dynatrace environment
