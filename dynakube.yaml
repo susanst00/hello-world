@@ -1,4 +1,5 @@
-apiVersion: v1
+#apiVersion: v1
+apiVersion: dynatrace.com/v1beta3
 data:
   apiToken: ZHQwYzAxLkdKQ0xNUE5LSzVHUFhSWkM1VFBVRjVYVS5GQkxaNlJLN05aVDNJTkVDWE1KTlBHWVRaSTZEWFVKT0g0SU1MWVZIUjRYNVcyRkZMTkpBNlFRN1ROUkZPN1pQ
   dataIngestToken: ZHQwYzAxLlM1NUZLNTNDTERBRU9RSUtZRE9BQ0gzVC4yVjRZNkFWWE5WUEFDNlBBQUFITzdXUjdaTjdXWUNMVUNGRzVRWlk2V0QyS1dDU1VKSFU0SEs0VVpaWjVNS1VJ
@@ -143,6 +144,11 @@ spec:
     capabilities:
       - routing
       - kubernetes-monitoring
+    customProperties:
+     value: |
+       [kubernetes_monitoring]
+       kubernetes_configuration_dataset_pipeline_enabled = true
+       kubernetes_configuration_dataset_pipeline_include_node_config = true
 
     # Optional: Sets the image used to deploy ActiveGate instances
     # Defaults to the latest ActiveGate image on the tenant's registry
@@ -162,6 +168,18 @@ spec:
     # - effect: NoSchedule
     #   key: node-role.kubernetes.io/master
     #   operator: Exists
+ templates:
+    kspmNodeConfigurationCollector:
+      imageRef:
+        repository: public.ecr.aws/dynatrace/dynatrace-k8s-node-config-collector
+        tag: <tag>
+      tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/control-plane
+          operator: Exists
 
     # Optional: Sets a node selector to control on which nodes the ActiveGate will be deployed.
     # For more information on node selectors, see https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/
