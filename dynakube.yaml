@@ -1,17 +1,17 @@
 apiVersion: v1
 data:
-  apiToken: ZHQwYzAxLkpNQUdFQ0Q1Q1NOUkxaUURCV0hVTkhSTC5KVldIQ0M3QkRKU1RNVDVCTzI1UFVKVzNMVzdYTldGSDdWTUY3SllHQjU3RFZIRVFHWkQ3U0tGRjQzTTZXM0JO
-  dataIngestToken: ZHQwYzAxLldPSDJYUUc3VFBYNjZLUEhDNTNNSEw0Vy5JUUFTVDY1VlZFSVQzNE1WQVpLRFFaVVJFRFJWRVBRTVhHVlJZVkdYSVU0TVZVUTJDWjNaUERWMjNSVjRKQlRK
+  apiToken: ZHQwYzAxLlVOUVJHU0lMTVpBR1pOTjVPTkc3MjY3NC5YVk9FMlpKWTIzUlRCS1Q0VVBOTEJINUNVRVRHNFBPSEMzS1NFQUdDWk80TkY1NEpHQlhGSkdFWlhZQ1lSWkJK
+  dataIngestToken: ZHQwYzAxLlVSUVpHMzNNM0lIVFFCNkFRQVBMVFZTSC5DM0JRRlVVU1BGNFVKNVBPVFg3N0JGNVBHRUxUNkFXMktHSFJYSVVSNUhTRFUyRU5SMjNQNUJRTFhTMzVISkpE
 kind: Secret
 metadata:
-  name: openmetadata
+  name: openmetadata-123
   namespace: dynatrace
 type: Opaque
 ---
 apiVersion: dynatrace.com/v1beta2
 kind: DynaKube
 metadata:
-  name: openmetadata
+  name: openmetadata-123
   namespace: dynatrace
   annotations:
     feature.dynatrace.com/k8s-app-enabled: "true"
