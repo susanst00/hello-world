@@ -13,7 +13,7 @@ type: Opaque
 apiVersion: dynatrace.com/v1beta3
 kind: DynaKube
 metadata:
-  name: openmetadata-123-try3
+  name: openmetadata-123-4
   namespace: dynatrace
   annotations:
     feature.dynatrace.com/k8s-app-enabled: "true"
