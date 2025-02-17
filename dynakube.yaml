@@ -1,5 +1,4 @@
-#apiVersion: v1
-apiVersion: dynatrace.com/v1beta3
+apiVersion: v1
 data:
   apiToken: ZHQwYzAxLlVOUVJHU0lMTVpBR1pOTjVPTkc3MjY3NC5YVk9FMlpKWTIzUlRCS1Q0VVBOTEJINUNVRVRHNFBPSEMzS1NFQUdDWk80TkY1NEpHQlhGSkdFWlhZQ1lSWkJK
   dataIngestToken: ZHQwYzAxLlVSUVpHMzNNM0lIVFFCNkFRQVBMVFZTSC5DM0JRRlVVU1BGNFVKNVBPVFg3N0JGNVBHRUxUNkFXMktHSFJYSVVSNUhTRFUyRU5SMjNQNUJRTFhTMzVISkpE
@@ -24,6 +23,7 @@ spec:
   apiUrl: https://tfh19986.sprint.dynatracelabs.com/api
 
   #added for kspm - susan
+  apiVersion: dynatrace.com/v1beta3
   kspm: {}
   activeGate:
     capabilities:
