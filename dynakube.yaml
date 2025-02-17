@@ -5,7 +5,7 @@ data:
   dataIngestToken: ZHQwYzAxLlM1NUZLNTNDTERBRU9RSUtZRE9BQ0gzVC4yVjRZNkFWWE5WUEFDNlBBQUFITzdXUjdaTjdXWUNMVUNGRzVRWlk2V0QyS1dDU1VKSFU0SEs0VVpaWjVNS1VJ
 kind: Secret
 metadata:
-  name: openmetadata-123-try3
+  name: openmetadata-123-4
   namespace: dynatrace
 type: Opaque
 ---
